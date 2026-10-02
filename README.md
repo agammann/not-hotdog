@@ -12,6 +12,15 @@ Neither workflow calls a publisher funded API. No API key is required. Normal Ch
 
 Publisher and support: [agammann](https://github.com/agammann). [Report an issue](https://github.com/agammann/not-hotdog/issues).
 
+## Try it in your browser
+
+1. Open the [website](https://not-hotdog.alx21.chatgpt.site) and choose **Enable hover**.
+2. Hover over or click either sample. The first check loads about 17 MB of model files onto your device.
+3. Choose **Choose an image** to try your own PNG, JPEG or WebP file smaller than 12 MB. Click the new image for its verdict.
+4. Press Escape to pause or choose **Clear results** to remove the displayed verdicts.
+
+The website works without installing the chat plugin or browser extension. The extension adds hover checks to other webpages; the chat plugin works with images shared in an assistant conversation. These are separate installs.
+
 ## Run and build
 
 Use Node.js 24 and pnpm 11.19.0:
@@ -41,7 +50,7 @@ The image model works best with clear photographs. Completed checks return HOTDO
 
 Package `.codex-plugin`, `skills`, and `assets` as a ZIP. Submit using Skills only in the OpenAI plugin portal. The skill uses the host assistant to inspect a selected image. It has no MCP server or credentials. Installing it does not install the browser companion. Draft test cases and metadata are in chatgpt-app-submission.json.
 
-See RELEASE_STATUS.md for actual deployment and submission status. Public GitHub source does not imply OpenAI approval or a browser store listing.
+See [release status](RELEASE_STATUS.md) for deployment and submission history, and [October 2 verification](VERIFICATION-2026-10-02.md) for actual Chrome and Edge website and installed-extension checks. Public GitHub source does not imply OpenAI approval or a browser store listing.
 
 ## Hosting and data
 

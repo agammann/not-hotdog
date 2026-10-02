@@ -10,7 +10,13 @@ Version 0.2.2 is approved and published in the OpenAI Plugins Directory with pac
 
 [Public repository](https://github.com/agammann/not-hotdog)
 
-## Verification
+## October 2, 2026 verification
+
+The public website is 0.3.1, its downloadable companion is 0.2.4, and the official directory listing still shows chat plugin 0.2.2. The website and the actual downloaded extension passed fresh checks in Chrome 154.0.8037.95 and Edge 154.0.4258.48. Extension checks covered toolbar activation, local inference, cross-origin screenshot cropping, Escape and navigation reset. The model weights total 17,015,456 bytes. See the [dated verification record](VERIFICATION-2026-10-02.md) for exact scope and limitations.
+
+All 18 automated tests passed after updating fflate to 0.8.3, and the dependency audit reported no known vulnerabilities. CI now runs that audit after the build and tests.
+
+## Earlier verification: companion 0.2.3
 
 1. All current tracked source files and all release archives were checked for the previous product name, with zero matches.
 2. Public website, privacy, terms, extension instructions, health, and extension ZIP returned HTTP 200 without authentication. The downloaded ZIP matches the local release byte for byte.
@@ -21,7 +27,7 @@ Version 0.2.2 is approved and published in the OpenAI Plugins Directory with pac
 
 ## Limits
 
-The browser extension is an unpacked preview. Its behavior tests use simulated Chrome APIs and a DOM; a real installed Chrome or Edge session has not been verified. Two sample images do not establish general accuracy. No browser store listing is claimed.
+At this earlier checkpoint, extension behavior tests used simulated Chrome APIs and a DOM; actual installed Chrome and Edge checks were added on October 2 as recorded above. The extension remains an unpacked preview. Two sample images do not establish general accuracy. No browser store listing is claimed.
 
 Historical Git commits and retired platform records retain their original metadata. Current names, package identifiers, source files, URLs, directories, and downloads use not hotdog or not-hotdog.
 
@@ -39,4 +45,4 @@ MobileNet V1 1.0 replaces the 0.25 model. Full precision weights total 17,015,45
 
 Eighteen automated checks passed. Actual browser inference passed five hotdog photo inputs and six nonhotdog inputs, including the image that previously returned UNCERTAIN. Two of the five positive inputs depict the same source photograph, so this is a small regression set rather than an independent accuracy benchmark. The illustrated site mascot remains a known false negative. A smaller quantized candidate was rejected after missing photos that the full precision model recognized.
 
-The original image was selected through the website file picker, correctly classified as NOT HOTDOG, and Escape paused further checks. Browser error logs were empty. Private user images and temporary third party test images are excluded from source and release artifacts. Actual installed extension behavior remains unverified; automated extension behavior tests use simulated browser APIs.
+The original image was selected through the website file picker, correctly classified as NOT HOTDOG, and Escape paused further checks. Browser error logs were empty. Private user images and temporary third party test images are excluded from source and release artifacts. At this release checkpoint installed-extension behavior was still unverified; the October 2 record above supersedes that limitation for its listed scenarios.
