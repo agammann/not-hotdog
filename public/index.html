@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ee3b25">
 <meta name="description" content="Big question. Small bun. Give any image a very frank assessment with not hotdog, a playful image classifier that runs on your device.">
 <title>not hotdog · Big question. Small bun.</title>
-<link rel="preload" href="/fonts/anton.ttf" as="font" type="font/ttf" crossorigin><link rel="stylesheet" href="/style.css?v=0.3.1"><script type="module" src="/app.js?v=0.3.1" defer></script>
+<link rel="preload" href="/fonts/anton.ttf" as="font" type="font/ttf" crossorigin><link rel="stylesheet" href="/style.css?v=0.3.2"><script type="module" src="/app.js?v=0.3.2" defer></script>
 </head>
 <body class="home">
 <a class="skip" href="#verdict">Skip to the classifier</a>
@@ -13,10 +13,22 @@
 <section class="hero" aria-labelledby="hero-title"><div class="hero-inner"><div class="hero-copy"><h1 id="hero-title">BIG QUESTION.<br>SMALL BUN.</h1><p>Hotdog or not hotdog? Give your photo a very frank assessment.</p><a class="pill cream" href="#verdict">Put it to the test <span aria-hidden="true">↘</span></a></div><div class="hero-art"><img class="mascot" src="/mascot.png" alt="A cheerful cartoon hotdog with white gloves and red sneakers" width="1024" height="1536" fetchpriority="high"><span class="scribble" aria-hidden="true">a very<br>serious<br>question.</span></div></div></section>
 <div class="ticker" aria-hidden="true"><span>HOTDOG?</span><b>✷</b><span>NOT HOTDOG?</span><b>✷</b><span>HOTDOG?</span><b>✷</b><span>NOT HOTDOG?</span></div>
 <section class="play-section" id="verdict" aria-labelledby="play-title"><div class="section-intro"><h2 id="play-title">THE MOMENT OF TRUTH.</h2><p>Pick a photo. Let the local model make a big call.</p></div><div class="play-area">
-<section class="controls" aria-label="Classification controls"><button class="pill dark" id="enable" aria-pressed="false">Enable hover</button><label class="upload pill">Choose an image <span aria-hidden="true">↑</span><input id="upload" type="file" accept="image/png,image/jpeg,image/webp"></label><button id="clear" class="quiet">Clear results</button></section>
+<label class="mode-choice" for="check-mode">How to check <select id="check-mode"><option value="device">On this device · no key</option><option value="hosted">Hosted second opinion · your OpenAI key</option></select></label>
+<section class="controls" aria-label="Classification controls"><button class="pill dark" id="enable" aria-pressed="false">Enable hover</button><label class="upload pill">Choose an image <span aria-hidden="true">↑</span><input id="upload" type="file" accept="image/png,image/jpeg,image/webp"></label><button id="clear" class="quiet">Clear results &amp; key</button></section>
 <p id="status" role="status" aria-live="polite">Your move. Enable hover to start.</p>
+<section class="hosted-panel" id="hosted-panel" aria-labelledby="hosted-title" hidden>
+<h3 id="hosted-title">A SECOND OPINION.</h3>
+<p>GPT-5.4 checks one selected image when you press Send. Your OpenAI API account pays; ChatGPT subscriptions do not include API usage. <a href="https://openai.com/api/pricing/" target="_blank" rel="noreferrer">API pricing</a>.</p>
+<p>Your image is resized to at most 768 pixels and re-encoded as JPEG here to remove file metadata. That image and your key pass through this site's server to OpenAI. Our app does not save them. <a href="/privacy">Data handling</a>.</p>
+<label for="visitor-key">Your OpenAI API key <input id="visitor-key" type="password" autocomplete="off" spellcheck="false" autocapitalize="none" maxlength="515" placeholder="sk-…" disabled></label>
+<p class="key-note">Kept only in page memory. Clear, switch to device mode, leave, or reload to forget it. Canceling may not prevent billing for a request already sent.</p>
+<p id="hosted-selected">Select an image below. Selecting or hovering sends nothing.</p>
+<div class="hosted-actions"><button class="pill dark" id="hosted-check" disabled>Send selected image</button><button class="pill border" id="hosted-cancel" disabled>Cancel</button></div>
+<p id="hosted-status" role="status" aria-live="polite">No hosted check is running.</p>
+<div id="hosted-result" role="status" aria-live="polite" hidden></div>
+</section>
 <section class="gallery" aria-label="Images to classify"><button class="image-card" data-sample="hotdog.jpg" aria-label="Classify the hotdog sample"><span class="card-title">01 / THE USUAL SUSPECT</span><img src="/samples/hotdog.jpg" alt="A sausage in a bun with mustard" width="600" height="400"><span class="verdict">HOVER TO FIND OUT</span></button><button class="image-card" data-sample="banana.jpg" aria-label="Classify the banana sample"><span class="card-title">02 / THE IMPOSTER</span><img src="/samples/banana.jpg" alt="A yellow banana" width="600" height="400"><span class="verdict">HOVER TO FIND OUT</span></button></section>
-<p class="device-note">Images stay on this device. No account. No API key.<br><span>Click or press Enter works too. First use downloads a 17 MB local model. Best with clear photos; drawings can fool it.</span></p></div></section>
+<p class="device-note">Device mode: images stay here. No account. No API key.<br><span>Click or press Enter works too. First use downloads a 17 MB local model. Best with clear photos; drawings and heavily topped hotdogs can fool it. Hosted checks are optional and send only the selected image when you press Send.</span></p></div></section>
 <section class="how-section" id="how-it-works" aria-labelledby="how-title"><div class="how-intro"><h2 id="how-title">A LITTLE MODEL.<br>A LOT OF OPINIONS.</h2><p>It looks at your photo and makes one call: HOTDOG or NOT HOTDOG. Sometimes it gets carried away. That is part of the joke.</p></div><ol class="steps"><li><span class="step-number" aria-hidden="true">01</span><h3>PICK IT.</h3><p>Try a sample or choose a photo from your device.</p></li><li><span class="step-number" aria-hidden="true">02</span><h3>HOVER IT.</h3><p>Enable hover, then point. A click works too.</p></li><li><span class="step-number" aria-hidden="true">03</span><h3>SETTLE IT.</h3><p>Get your verdict. Press Escape whenever you want to pause.</p></li></ol></section>
 <section class="takeaway" aria-labelledby="takeaway-title"><h2 id="takeaway-title">TAKE THIS NONSENSE<br>WITH YOU.</h2><div class="takeaway-actions"><a class="pill dark" href="https://chatgpt.com/plugins/plugins_6aa62d11f8308191af4d7ab1aba34ec3">Get the chat plugin <span aria-hidden="true">↗</span></a><a class="pill border" href="/extension">Get the browser companion <span aria-hidden="true">↗</span></a><p>Two separate installs. One very small question.</p></div></section>
 </main>

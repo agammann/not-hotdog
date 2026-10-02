@@ -16,4 +16,4 @@ async function walk(dir,prefix=''){for(const e of await fs.readdir(dir,{withFile
 await walk('public');await fs.writeFile('src/assets.generated.mjs',`export const assets=${JSON.stringify(assets)};\n`);
 await fs.mkdir('dist/server',{recursive:true});await build({...common,entryPoints:['src/worker.mjs'],outfile:'dist/server/index.js'});
 await fs.mkdir('dist/.openai',{recursive:true});await fs.copyFile('.openai/hosting.json','dist/.openai/hosting.json');
-console.log('Built on device website, extension, and static Worker. No API credential is used.');
+console.log('Built device website, local extension, and optional visitor-key Worker. No build-time API credential is used.');
