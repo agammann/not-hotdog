@@ -12,7 +12,9 @@ Version 0.2.2 is approved and published in the OpenAI Plugins Directory with pac
 
 ## October 2, 2026 verification
 
-The public website is 0.3.1, its downloadable companion is 0.2.4, and the official directory listing still shows chat plugin 0.2.2. The website and the actual downloaded extension passed fresh checks in Chrome 154.0.8037.95 and Edge 154.0.4258.48. Extension checks covered toolbar activation, local inference, cross-origin screenshot cropping, Escape and navigation reset. The model weights total 17,015,456 bytes. See the [dated verification record](VERIFICATION-2026-10-02.md) for exact scope and limitations.
+Website source 0.3.2 adds an optional manual GPT-5.4 second opinion using the visitor's own API key. Local hover, its model and threshold, browser companion 0.2.4, and the separate chat plugin are preserved. The final hosted contract returns only a label, displayed with fixed wording about the model's judgment. The [follow-up verification record](VERIFICATION-2026-10-02.md#follow-up-optional-hosted-website-mode-source-032) distinguishes the initial eight-image candidate comparison from the final contract's targeted real API check. At this source checkpoint, production publication and route verification are pending.
+
+At the earlier public checkpoint, the website was 0.3.1, its downloadable companion was 0.2.4, and the official directory listing showed chat plugin 0.2.2. The website and the actual downloaded extension passed fresh checks in Chrome 154.0.8037.95 and Edge 154.0.4258.48. Extension checks covered toolbar activation, local inference, cross-origin screenshot cropping, Escape and navigation reset. The model weights total 17,015,456 bytes. See the [dated verification record](VERIFICATION-2026-10-02.md) for exact scope and limitations.
 
 All 18 automated tests passed after updating fflate to 0.8.3, and the dependency audit reported no known vulnerabilities. CI now runs that audit after the build and tests.
 
