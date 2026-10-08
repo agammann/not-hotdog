@@ -1,10 +1,16 @@
 {
   "name": "not-hotdog",
-  "version": "0.3.2",
+  "version": "1.0.0",
+  "license": "MIT",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "node src/local.mjs",
+    "start": "node src/local.mjs",
+    "test:e2e": "node scripts/check-browser.mjs",
+    "test:extension": "node scripts/check-extension.mjs",
+    "check:release": "node scripts/check-release.mjs",
+    "package:release": "node scripts/package-release.mjs",
     "build": "node scripts/model-assets.mjs && node scripts/build.mjs",
     "test": "node --test test/*.test.mjs"
   },
@@ -16,7 +22,8 @@
     "fflate": "0.8.3"
   },
   "devDependencies": {
-    "jsdom": "30.0.1"
+    "jsdom": "30.0.1",
+    "playwright": "1.63.0"
   },
   "engines": {
     "node": ">=24 <25"

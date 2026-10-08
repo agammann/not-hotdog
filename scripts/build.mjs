@@ -7,6 +7,7 @@ await build({...common,entryPoints:['src/website.mjs'],outfile:'public/app.js'})
 await build({...common,entryPoints:['src/device-worker.mjs'],outfile:'public/device-worker.js'});
 await build({...common,entryPoints:['src/extension-background.mjs'],outfile:'extension/background.js'});
 await fs.cp('public/model','extension/model',{recursive:true});
+await fs.copyFile('MODEL.lock.json','extension/MODEL.lock.json');
 const packed={};
 async function zipWalk(dir,prefix=''){for(const e of await fs.readdir(dir,{withFileTypes:true})){const name=prefix+e.name;if(e.isDirectory())await zipWalk(path.join(dir,e.name),name+'/');else packed[name]=new Uint8Array(await fs.readFile(path.join(dir,e.name)));}}
 await zipWalk('extension');

@@ -11,3 +11,6 @@ public/app.js
 public/not-hotdog-extension.zip
 extension/model/
 extension/background.js
+extension/MODEL.lock.json
+release-artifacts/
+test-results/
