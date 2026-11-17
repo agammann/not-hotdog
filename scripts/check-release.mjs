@@ -5,7 +5,7 @@ import { unzipSync } from "fflate";
 const pkg = JSON.parse(readFileSync("package.json", "utf8")),
   manifest = JSON.parse(readFileSync("extension/manifest.json", "utf8")),
   plugin = JSON.parse(readFileSync(".codex-plugin/plugin.json", "utf8"));
-assert.equal(pkg.version, "1.0.0");
+assert.equal(pkg.version, "1.0.1");
 assert.equal(pkg.license, "MIT");
 assert.equal(pkg.packageManager, "pnpm@11.19.0");
 assert.equal(manifest.version, pkg.version);

@@ -9,7 +9,7 @@ await build({...common,entryPoints:['src/extension-background.mjs'],outfile:'ext
 await fs.cp('public/model','extension/model',{recursive:true});
 await fs.copyFile('MODEL.lock.json','extension/MODEL.lock.json');
 const packed={};
-async function zipWalk(dir,prefix=''){for(const e of await fs.readdir(dir,{withFileTypes:true})){const name=prefix+e.name;if(e.isDirectory())await zipWalk(path.join(dir,e.name),name+'/');else packed[name]=new Uint8Array(await fs.readFile(path.join(dir,e.name)));}}
+async function zipWalk(dir,prefix=''){for(const e of (await fs.readdir(dir,{withFileTypes:true})).sort((a,b)=>a.name<b.name?-1:a.name>b.name?1:0)){const name=prefix+e.name;if(e.isDirectory())await zipWalk(path.join(dir,e.name),name+'/');else packed[name]=[new Uint8Array(await fs.readFile(path.join(dir,e.name))),{mtime:new Date(2000,0,1,0,0,0)}];}}
 await zipWalk('extension');
 await fs.writeFile('public/not-hotdog-extension.zip',zipSync(packed,{level:6}));
 const assets={},types={'.html':'text/html; charset=utf-8','.js':'application/javascript','.css':'text/css','.png':'image/png','.jpg':'image/jpeg','.json':'application/json','.bin':'application/octet-stream','.zip':'application/zip','.ttf':'font/ttf','.txt':'text/plain; charset=utf-8'};
