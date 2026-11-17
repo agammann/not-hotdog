@@ -141,7 +141,7 @@ const publish = async ({ github, context, core }) => {
   const notes = changelog.split(heading)[1].split("\n## ")[0].trim();
   const body =
     notes +
-    "\n\nThe source ZIP includes the MIT license and pinned dependency/model metadata. Use Node.js 24 and pnpm 11.19.0, run `pnpm install --frozen-lockfile`, `pnpm build`, then `pnpm start`. Extract the separate companion ZIP and load its manifest folder unpacked in Chrome or Edge. The skills-only chat package is a separate installation. Device inference stays local; hosted website checks use your own API key only after Send. See the dated verification notes for observed model limits.\n\n" +
+    "\n\nThe source ZIP includes the MIT license and pinned dependency/model metadata. Use Node.js 24.15.0 or later in the 24.x line and pnpm 11.19.0, run `pnpm install --frozen-lockfile`, `pnpm build`, then `pnpm start`. Extract the separate companion ZIP and load its manifest folder unpacked in Chrome or Edge. The skills-only chat package is a separate installation. Device inference stays local; hosted website checks use your own API key only after Send. See the dated verification notes for observed model limits.\n\n" +
     "[Installation, upgrade and recovery](https://github.com/" +
     owner +
     "/" +

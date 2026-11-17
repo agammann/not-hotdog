@@ -1,4 +1,8 @@
-# v1 verification
+# Verification records
+
+The [November 17, 2026 record](VERIFICATION-2026-11-17.md) covers 1.0.1 source, device and companion readiness checks. The earlier record below retains the separately dated paid-model comparison and its limitations.
+
+## 1.0.0 verification, October 8, 2026
 
 Fresh source checks were run on October 8, 2026 UTC with Node 24.19.0, pnpm 11.19.0 and Windows. Browser versions and exact downloaded-release results are recorded separately below as they complete. Earlier October 2 evidence remains in [the dated report](VERIFICATION-2026-10-02.md); it is not counted as a fresh v1 run.
 

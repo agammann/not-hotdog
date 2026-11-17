@@ -27,7 +27,7 @@ Hosted mode resizes the selected image to at most 768 pixels per side and re-enc
 
 ## Install the companion
 
-Download `not-hotdog_1.0.0_extension.zip` from the release, or use the [website companion download](https://not-hotdog.alx21.chatgpt.site/extension). Extract it into a permanent folder.
+Download `not-hotdog_1.0.1_extension.zip` from the release, or use the [website companion download](https://not-hotdog.alx21.chatgpt.site/extension). Extract it into a permanent folder.
 
 1. Open `chrome://extensions` or `edge://extensions` and enable Developer mode.
 2. Choose **Load unpacked** and select the extracted folder containing `manifest.json`.
@@ -48,7 +48,7 @@ Installing this plugin does not install the browser companion or enable hover. I
 
 ## Run from source
 
-Install Node.js **24** and **pnpm 11.19.0**. If pnpm is absent, run `npm install --global pnpm@11.19.0`. Download and extract `not-hotdog_1.0.0_source.zip`, open a terminal in its `not-hotdog-1.0.0` folder, then run:
+Install Node.js **24.15.0 or later in the 24.x line** and **pnpm 11.19.0**. If pnpm is absent, run `npm install --global pnpm@11.19.0`. Download and extract `not-hotdog_1.0.1_source.zip`, open a terminal in its `not-hotdog-1.0.1` folder, then run:
 
 ```sh
 pnpm install --frozen-lockfile
@@ -72,7 +72,7 @@ Browser checks use installed Chrome by default and run headlessly. Install deskt
 
 Developer entrypoints: `src/website.mjs` controls cards; `src/device-engine.mjs` runs TensorFlow in a worker; `src/verdict.mjs` applies the binary threshold; `src/hosted-contract.mjs` defines the fixed label-only request; `src/visitor-classify.mjs` is the bounded visitor-key proxy. Companion entrypoints are `extension/popup.js`, `extension/content.js` and `src/extension-background.mjs`. Chat instructions are in `skills/hotdog-verdict/SKILL.md`.
 
-`POST /api/classify/visitor` requires same-origin JSON, the supported model, a bounded JPEG and the visitor's bearer key. It makes one fixed-provider request, with no environment-key fallback or provider URL override, 500 output tokens and a 90-second timeout. The older `/api/classify` and `/mcp` routes return 410. `.openai/hosting.json` declares the generated Worker deployment. No database or publisher credential is required.
+`POST /api/classify/visitor` requires same-origin JSON, the supported model, a bounded JPEG and the visitor's bearer key. It makes one fixed-provider request, with no environment-key fallback or provider URL override, 500 output tokens and a 90-second timeout. The application and local server return 410 for the older `/api/classify` and `/mcp` routes. Public hosting may intercept the retired `/mcp` route with 404; no MCP service is provided. `.openai/hosting.json` declares the generated Worker deployment. No database or publisher credential is required.
 
 ## Upgrade and recover
 
@@ -87,3 +87,5 @@ For the companion, replace its extracted folder with the new release and click *
 - Unexpected result: try the optional hosted second opinion or treat the verdict as the toy's opinion. Do not use it for a food-safety decision.
 
 Support: [GitHub Issues](https://github.com/agammann/not-hotdog/issues). Include the version/browser and reproduction steps; do not post private images or keys. Original source is [MIT licensed](LICENSE). [Third-party notices](THIRD_PARTY_NOTICES.md) retain photograph, font, TensorFlow and bundled dependency terms.
+
+[November 17 source/device verification](VERIFICATION-2026-11-17.md) records the current local checks and their boundaries; earlier paid and installed-host evidence remains separately dated.
