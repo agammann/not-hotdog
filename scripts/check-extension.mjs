@@ -259,10 +259,12 @@ try {
   assert.equal(await p.text(), "Enable on this tab");
   await p.close();
   report.checks.push("Navigation resets activation");
-  await page.goto(
+  // Keep browser-internal errors out of the application page's error report.
+  const settingsPage = await context.newPage();
+  await settingsPage.goto(
     channel === "msedge" ? "edge://settings/" : "chrome://settings/",
   );
-  await page.bringToFront();
+  await settingsPage.bringToFront();
   const settingsTab = (
     await cdp.send("Target.getTargets", { filter: [{ type: "tab" }] })
   ).targetInfos.find((t) => /^(chrome|edge):\/\/settings/.test(t.url));
@@ -305,6 +307,7 @@ try {
     returnByValue: true,
   });
   assert.match(blocked.result.value, /regular webpage.*protected/);
+  await settingsPage.close();
   report.checks.push(
     "Real settings page is blocked with an understandable popup message",
   );
